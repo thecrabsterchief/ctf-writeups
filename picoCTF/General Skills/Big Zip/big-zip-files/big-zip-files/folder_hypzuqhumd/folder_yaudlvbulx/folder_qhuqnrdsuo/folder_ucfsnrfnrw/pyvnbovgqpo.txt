@@ -1,0 +1,1 @@
+So for a cube, there are 6 faces (F = 6) and 8 vertices (V = 8), and 8 - E + 6 = 2, 14 - E = 2,

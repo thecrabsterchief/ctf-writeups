@@ -1,0 +1,1 @@
+planet about the Sun, measured in years, and a the distance of the planet from the Sunmeasured in ‘astronomical units.’ An astronomical unit is the distance of the Earth from the

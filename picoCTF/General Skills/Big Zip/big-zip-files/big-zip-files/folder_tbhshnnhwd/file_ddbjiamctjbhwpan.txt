@@ -1,0 +1,1 @@
+Every edge of a regular solid is shared by the sides of two adjacent polygons. Think

@@ -1,0 +1,1 @@
+all the vertices connected by lines. But for a real tesseract, in four dimensions, all the lines

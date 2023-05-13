@@ -1,0 +1,1 @@
+10 8 m/sec) = 1/(10 8 /sec) =10 -8 sec, or a hundredth of a microsecond. In this calculation we

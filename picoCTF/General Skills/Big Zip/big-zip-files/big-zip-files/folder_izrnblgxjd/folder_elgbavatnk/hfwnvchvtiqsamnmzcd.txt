@@ -1,0 +1,1 @@
+small. The Sphinx is missing a nose. Someone shot it off in a moment of idle desecration -

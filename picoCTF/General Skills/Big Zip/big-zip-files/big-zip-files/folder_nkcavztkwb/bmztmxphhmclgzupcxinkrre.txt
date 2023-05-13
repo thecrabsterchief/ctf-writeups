@@ -1,0 +1,1 @@
+we can write p = 2s, where s is some other integer. Substituting for p in Equation (1), we

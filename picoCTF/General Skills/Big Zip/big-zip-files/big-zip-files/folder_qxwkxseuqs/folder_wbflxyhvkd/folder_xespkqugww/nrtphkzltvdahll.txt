@@ -1,0 +1,1 @@
+So in this case r can equal 3, 4, or 5 only. (If E were 6 or more, the equation would be

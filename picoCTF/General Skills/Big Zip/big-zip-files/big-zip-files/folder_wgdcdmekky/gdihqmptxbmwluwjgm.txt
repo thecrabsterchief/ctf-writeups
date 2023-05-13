@@ -1,0 +1,1 @@
+vertices connected. If we examine the shadow of a cube in two dimensions, we notice that

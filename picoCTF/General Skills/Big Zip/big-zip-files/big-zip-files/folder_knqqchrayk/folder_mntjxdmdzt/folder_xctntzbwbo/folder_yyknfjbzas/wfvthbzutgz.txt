@@ -1,0 +1,1 @@
+We also know that r is 3 or more, since at least 3 faces meet at a given vertex in a

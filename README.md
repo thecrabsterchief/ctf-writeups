@@ -1,1 +1,3 @@
-# CTF-Wargames
+# CTF Wargames
+
+* [picoCTF](/picoCTF)
