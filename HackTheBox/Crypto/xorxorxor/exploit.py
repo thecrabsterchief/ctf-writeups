@@ -1,0 +1,7 @@
+from pwn import *
+
+ct = bytes.fromhex("134af6e1297bc4a96f6a87fe046684e8047084ee046d84c5282dd7ef292dc9")
+key = xor(ct[:4], b'HTB{')
+flag = [key[i % len(key)] ^ ct[i] for i in range(len(ct))]
+
+print(bytes(flag))
