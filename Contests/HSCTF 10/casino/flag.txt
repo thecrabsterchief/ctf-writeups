@@ -1,0 +1,1 @@
+flag{you're_ready_for_vegas_now}
