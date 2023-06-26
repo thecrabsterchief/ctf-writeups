@@ -48,21 +48,21 @@ io = remote("mytls.2023.ctfcompetition.com", 1337)
 io.recvline()
 
 # Getting the server private key.
-with open('./guest-ecdhkey.pem', 'rb') as client_key_file:
+with open('./src/guest-ecdhkey.pem', 'rb') as client_key_file:
     client_key = serialization.load_pem_private_key(client_key_file.read(),
                                                     None, default_backend())
 
 # Getting the server private key.
-with open('server-ecdhkey.pem', 'rb') as server_key_file:
+with open('./server-ecdhkey.pem', 'rb') as server_key_file:
     server_key = serialization.load_pem_private_key(server_key_file.read(),
                                                     None, default_backend())
 
 # Getting the CA cert.
-with open('ca-crt.pem', 'rb') as ca_file:
+with open('./src/ca-crt.pem', 'rb') as ca_file:
     ca = x509.load_pem_x509_certificate(ca_file.read())
 
 # Getting the client cert.
-with open('./admin-ecdhcert.pem', 'rb') as client_cert_file:
+with open('./src/admin-ecdhcert.pem', 'rb') as client_cert_file:
     client_cert_content = client_cert_file.read()
     client_cert = x509.load_pem_x509_certificate(client_cert_content)
 
