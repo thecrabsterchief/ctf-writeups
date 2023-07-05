@@ -1,1 +1,0 @@
-flag{bigger_is_better}

@@ -1,0 +1,16 @@
+# List of contests
+
+* [Aero CTF](./Aero%20CTF%202022/)
+* [ASCIS CTF](./ASCIS%20CTF%202022/)
+* [ASIS CTF](./ASIS%20CTF%202022/)
+* [BlueHens CTF](../BlueHens%20CTF%202022/)
+* [CorCTF](./Cor%20CTF%202022/)
+* [DownUnder CTF](../DownUnder%20CTF%202022)
+* [Google CTF](./Google%20CTF%202022/)
+* [HCMUS CTF](./HCMUS%20CTF%202022/)
+* [ISITDTU CTF](./ISITDTU%20CTF%202022/)
+* [Just CTF](./Just%20CTF%202022/)
+* [Pico CTF](./PicoCTF%202022/)
+* [US Cyber Open CTF](../US%20Cyber%20Open%20CTF%202022/)
+* [WhiteHat Wargame](./WhiteHat%20Wargame%202022/)
+* [WMCTF](./WMCTF%202022/)

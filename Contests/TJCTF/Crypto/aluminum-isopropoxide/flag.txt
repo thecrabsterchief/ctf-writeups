@@ -1,1 +1,0 @@
-tjctf{flag_under_mountain_of_dust}

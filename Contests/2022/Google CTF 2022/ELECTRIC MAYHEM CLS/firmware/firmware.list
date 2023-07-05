@@ -1,0 +1,892 @@
+
+firmware.elf:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+08000000 <vector_table>:
+ 8000000:	00 00 01 20 c5 00 00 08 c3 00 00 08 c1 00 00 08     ... ............
+	...
+ 800002c:	c3 00 00 08 00 00 00 00 00 00 00 00 c3 00 00 08     ................
+ 800003c:	c3 00 00 08 c1 00 00 08 c1 00 00 08 c1 00 00 08     ................
+ 800004c:	c1 00 00 08 c1 00 00 08 c1 00 00 08 c1 00 00 08     ................
+ 800005c:	c1 00 00 08 c1 00 00 08 c1 00 00 08 c1 00 00 08     ................
+ 800006c:	c1 00 00 08 c1 00 00 08 c1 00 00 08 c1 00 00 08     ................
+ 800007c:	c1 00 00 08 c1 00 00 08 c1 00 00 08 c1 00 00 08     ................
+ 800008c:	c1 00 00 08 c1 00 00 08 c1 00 00 08 c1 00 00 08     ................
+ 800009c:	c1 00 00 08 c1 00 00 08 c1 00 00 08 c1 00 00 08     ................
+ 80000ac:	c1 00 00 08 c1 00 00 08 c1 00 00 08 c1 00 00 08     ................
+ 80000bc:	c1 00 00 08                                         ....
+
+080000c0 <blocking_handler>:
+ 80000c0:	e7fe      	b.n	80000c0 <blocking_handler>
+
+080000c2 <null_handler>:
+ 80000c2:	4770      	bx	lr
+
+080000c4 <reset_handler>:
+ 80000c4:	2200      	movs	r2, #0
+ 80000c6:	4814      	ldr	r0, [pc, #80]	; (8000118 <reset_handler+0x54>)
+ 80000c8:	4b14      	ldr	r3, [pc, #80]	; (800011c <reset_handler+0x58>)
+ 80000ca:	4915      	ldr	r1, [pc, #84]	; (8000120 <reset_handler+0x5c>)
+ 80000cc:	1814      	adds	r4, r2, r0
+ 80000ce:	18d0      	adds	r0, r2, r3
+ 80000d0:	4288      	cmp	r0, r1
+ 80000d2:	d203      	bcs.n	80000dc <reset_handler+0x18>
+ 80000d4:	6824      	ldr	r4, [r4, #0]
+ 80000d6:	3204      	adds	r2, #4
+ 80000d8:	6004      	str	r4, [r0, #0]
+ 80000da:	e7f4      	b.n	80000c6 <reset_handler+0x2>
+ 80000dc:	4a11      	ldr	r2, [pc, #68]	; (8000124 <reset_handler+0x60>)
+ 80000de:	4290      	cmp	r0, r2
+ 80000e0:	d202      	bcs.n	80000e8 <reset_handler+0x24>
+ 80000e2:	2100      	movs	r1, #0
+ 80000e4:	c002      	stmia	r0!, {r1}
+ 80000e6:	e7f9      	b.n	80000dc <reset_handler+0x18>
+ 80000e8:	4c0f      	ldr	r4, [pc, #60]	; (8000128 <reset_handler+0x64>)
+ 80000ea:	4810      	ldr	r0, [pc, #64]	; (800012c <reset_handler+0x68>)
+ 80000ec:	4284      	cmp	r4, r0
+ 80000ee:	d202      	bcs.n	80000f6 <reset_handler+0x32>
+ 80000f0:	cc08      	ldmia	r4!, {r3}
+ 80000f2:	4798      	blx	r3
+ 80000f4:	e7f9      	b.n	80000ea <reset_handler+0x26>
+ 80000f6:	4c0e      	ldr	r4, [pc, #56]	; (8000130 <reset_handler+0x6c>)
+ 80000f8:	4b0e      	ldr	r3, [pc, #56]	; (8000134 <reset_handler+0x70>)
+ 80000fa:	429c      	cmp	r4, r3
+ 80000fc:	d202      	bcs.n	8000104 <reset_handler+0x40>
+ 80000fe:	cc01      	ldmia	r4!, {r0}
+ 8000100:	4780      	blx	r0
+ 8000102:	e7f9      	b.n	80000f8 <reset_handler+0x34>
+ 8000104:	f000 f81c 	bl	8000140 <main>
+ 8000108:	4c0b      	ldr	r4, [pc, #44]	; (8000138 <reset_handler+0x74>)
+ 800010a:	490c      	ldr	r1, [pc, #48]	; (800013c <reset_handler+0x78>)
+ 800010c:	428c      	cmp	r4, r1
+ 800010e:	d202      	bcs.n	8000116 <reset_handler+0x52>
+ 8000110:	cc04      	ldmia	r4!, {r2}
+ 8000112:	4790      	blx	r2
+ 8000114:	e7f9      	b.n	800010a <reset_handler+0x46>
+ 8000116:	46c0      	nop			; (mov r8, r8)
+ 8000118:	08000554 	.word	0x08000554
+ 800011c:	20000000 	.word	0x20000000
+ 8000120:	20000004 	.word	0x20000004
+ 8000124:	20000024 	.word	0x20000024
+ 8000128:	08000554 	.word	0x08000554
+ 800012c:	08000554 	.word	0x08000554
+ 8000130:	08000554 	.word	0x08000554
+ 8000134:	08000554 	.word	0x08000554
+ 8000138:	08000554 	.word	0x08000554
+ 800013c:	08000554 	.word	0x08000554
+
+08000140 <main>:
+
+static uint32_t N = 1;
+static uint8_t key[16] = {};
+static uint8_t in[16] = {};
+
+int main() {
+ 8000140:	b5f0      	push	{r4, r5, r6, r7, lr}
+  // Read #traces.
+  LoadN(&N);
+ 8000142:	4f19      	ldr	r7, [pc, #100]	; (80001a8 <main+0x68>)
+int main() {
+ 8000144:	b0b1      	sub	sp, #196	; 0xc4
+  LoadN(&N);
+ 8000146:	0038      	movs	r0, r7
+ 8000148:	f000 f92a 	bl	80003a0 <LoadN>
+
+  // Read key.
+  for (uint32_t j = 0; j < sizeof(key); j++) {
+ 800014c:	2400      	movs	r4, #0
+    readbyte(&key[j]);
+ 800014e:	4d17      	ldr	r5, [pc, #92]	; (80001ac <main+0x6c>)
+ 8000150:	1928      	adds	r0, r5, r4
+  for (uint32_t j = 0; j < sizeof(key); j++) {
+ 8000152:	3401      	adds	r4, #1
+    readbyte(&key[j]);
+ 8000154:	f000 f91d 	bl	8000392 <readbyte>
+  for (uint32_t j = 0; j < sizeof(key); j++) {
+ 8000158:	2c10      	cmp	r4, #16
+ 800015a:	d1f8      	bne.n	800014e <main+0xe>
+  }
+
+  struct AES_ctx ctx;
+  AES_init_ctx(&ctx, key);
+ 800015c:	0029      	movs	r1, r5
+ 800015e:	4668      	mov	r0, sp
+ 8000160:	f000 f8fa 	bl	8000358 <AES_init_ctx>
+
+  for (uint32_t i = 0; i < N; i++) {
+ 8000164:	2500      	movs	r5, #0
+ 8000166:	683b      	ldr	r3, [r7, #0]
+ 8000168:	42ab      	cmp	r3, r5
+ 800016a:	d804      	bhi.n	8000176 <main+0x36>
+    for (uint32_t j = 0; j < sizeof(in); j++) {
+      printbyte(&in[j]);
+    }
+  }
+
+  endprogram();
+ 800016c:	f000 f943 	bl	80003f6 <endprogram>
+  return 0;
+}
+ 8000170:	2000      	movs	r0, #0
+ 8000172:	b031      	add	sp, #196	; 0xc4
+ 8000174:	bdf0      	pop	{r4, r5, r6, r7, pc}
+    for (uint32_t j = 0; j < sizeof(in); j++) {
+ 8000176:	2400      	movs	r4, #0
+ 8000178:	4e0d      	ldr	r6, [pc, #52]	; (80001b0 <main+0x70>)
+      randbyte(&in[j]);
+ 800017a:	1930      	adds	r0, r6, r4
+    for (uint32_t j = 0; j < sizeof(in); j++) {
+ 800017c:	3401      	adds	r4, #1
+      randbyte(&in[j]);
+ 800017e:	f000 f918 	bl	80003b2 <randbyte>
+    for (uint32_t j = 0; j < sizeof(in); j++) {
+ 8000182:	2c10      	cmp	r4, #16
+ 8000184:	d1f8      	bne.n	8000178 <main+0x38>
+    starttrigger();
+ 8000186:	f000 f8f2 	bl	800036e <starttrigger>
+    AES_ECB_encrypt(&ctx, in);
+ 800018a:	0031      	movs	r1, r6
+ 800018c:	4668      	mov	r0, sp
+ 800018e:	f000 f8e7 	bl	8000360 <AES_ECB_encrypt>
+    for (uint32_t j = 0; j < sizeof(in); j++) {
+ 8000192:	2400      	movs	r4, #0
+    endtrigger();
+ 8000194:	f000 f8f4 	bl	8000380 <endtrigger>
+      printbyte(&in[j]);
+ 8000198:	1930      	adds	r0, r6, r4
+    for (uint32_t j = 0; j < sizeof(in); j++) {
+ 800019a:	3401      	adds	r4, #1
+      printbyte(&in[j]);
+ 800019c:	f000 f924 	bl	80003e8 <printbyte>
+    for (uint32_t j = 0; j < sizeof(in); j++) {
+ 80001a0:	2c10      	cmp	r4, #16
+ 80001a2:	d1f9      	bne.n	8000198 <main+0x58>
+  for (uint32_t i = 0; i < N; i++) {
+ 80001a4:	3501      	adds	r5, #1
+ 80001a6:	e7de      	b.n	8000166 <main+0x26>
+ 80001a8:	20000000 	.word	0x20000000
+ 80001ac:	20000014 	.word	0x20000014
+ 80001b0:	20000004 	.word	0x20000004
+
+080001b4 <KeyExpansion>:
+*/
+#define getSBoxValue(num) (sbox[(num)])
+
+// This function produces Nb(Nr+1) round keys. The round keys are used in each round to decrypt the states. 
+static void KeyExpansion(uint8_t* RoundKey, const uint8_t* Key)
+{
+ 80001b4:	b5f7      	push	{r0, r1, r2, r4, r5, r6, r7, lr}
+ 80001b6:	000a      	movs	r2, r1
+ 80001b8:	0003      	movs	r3, r0
+ 80001ba:	3210      	adds	r2, #16
+  uint8_t tempa[4]; // Used for the column/row operations
+  
+  // The first round key is the key itself.
+  for (i = 0; i < Nk; ++i)
+  {
+    RoundKey[(i * 4) + 0] = Key[(i * 4) + 0];
+ 80001bc:	780c      	ldrb	r4, [r1, #0]
+ 80001be:	701c      	strb	r4, [r3, #0]
+    RoundKey[(i * 4) + 1] = Key[(i * 4) + 1];
+ 80001c0:	784c      	ldrb	r4, [r1, #1]
+ 80001c2:	705c      	strb	r4, [r3, #1]
+    RoundKey[(i * 4) + 2] = Key[(i * 4) + 2];
+ 80001c4:	788c      	ldrb	r4, [r1, #2]
+ 80001c6:	709c      	strb	r4, [r3, #2]
+    RoundKey[(i * 4) + 3] = Key[(i * 4) + 3];
+ 80001c8:	78cc      	ldrb	r4, [r1, #3]
+ 80001ca:	3104      	adds	r1, #4
+ 80001cc:	70dc      	strb	r4, [r3, #3]
+ 80001ce:	3304      	adds	r3, #4
+  for (i = 0; i < Nk; ++i)
+ 80001d0:	4291      	cmp	r1, r2
+ 80001d2:	d1f3      	bne.n	80001bc <KeyExpansion+0x8>
+        tempa[1] = getSBoxValue(tempa[1]);
+        tempa[2] = getSBoxValue(tempa[2]);
+        tempa[3] = getSBoxValue(tempa[3]);
+      }
+
+      tempa[0] = tempa[0] ^ Rcon[i/Nk];
+ 80001d4:	4b12      	ldr	r3, [pc, #72]	; (8000220 <KeyExpansion+0x6c>)
+  for (i = Nk; i < Nb * (Nr + 1); ++i)
+ 80001d6:	2204      	movs	r2, #4
+      tempa[0] = tempa[0] ^ Rcon[i/Nk];
+ 80001d8:	469c      	mov	ip, r3
+        tempa[0] = getSBoxValue(tempa[0]);
+ 80001da:	4e12      	ldr	r6, [pc, #72]	; (8000224 <KeyExpansion+0x70>)
+    if (i % Nk == 0)
+ 80001dc:	2703      	movs	r7, #3
+      tempa[0]=RoundKey[k + 0];
+ 80001de:	7b03      	ldrb	r3, [r0, #12]
+      tempa[1]=RoundKey[k + 1];
+ 80001e0:	7b45      	ldrb	r5, [r0, #13]
+      tempa[2]=RoundKey[k + 2];
+ 80001e2:	7b84      	ldrb	r4, [r0, #14]
+      tempa[3]=RoundKey[k + 3];
+ 80001e4:	7bc1      	ldrb	r1, [r0, #15]
+    if (i % Nk == 0)
+ 80001e6:	423a      	tst	r2, r7
+ 80001e8:	d109      	bne.n	80001fe <KeyExpansion+0x4a>
+      tempa[0] = tempa[0] ^ Rcon[i/Nk];
+ 80001ea:	4667      	mov	r7, ip
+        tempa[0] = getSBoxValue(tempa[0]);
+ 80001ec:	5d75      	ldrb	r5, [r6, r5]
+ 80001ee:	9501      	str	r5, [sp, #4]
+        tempa[1] = getSBoxValue(tempa[1]);
+ 80001f0:	5d35      	ldrb	r5, [r6, r4]
+        tempa[2] = getSBoxValue(tempa[2]);
+ 80001f2:	5c74      	ldrb	r4, [r6, r1]
+        tempa[3] = getSBoxValue(tempa[3]);
+ 80001f4:	5cf1      	ldrb	r1, [r6, r3]
+      tempa[0] = tempa[0] ^ Rcon[i/Nk];
+ 80001f6:	0893      	lsrs	r3, r2, #2
+ 80001f8:	5cfb      	ldrb	r3, [r7, r3]
+ 80001fa:	9f01      	ldr	r7, [sp, #4]
+ 80001fc:	407b      	eors	r3, r7
+        tempa[3] = getSBoxValue(tempa[3]);
+      }
+    }
+#endif
+    j = i * 4; k=(i - Nk) * 4;
+    RoundKey[j + 0] = RoundKey[k + 0] ^ tempa[0];
+ 80001fe:	7807      	ldrb	r7, [r0, #0]
+  for (i = Nk; i < Nb * (Nr + 1); ++i)
+ 8000200:	3201      	adds	r2, #1
+    RoundKey[j + 0] = RoundKey[k + 0] ^ tempa[0];
+ 8000202:	407b      	eors	r3, r7
+ 8000204:	7403      	strb	r3, [r0, #16]
+    RoundKey[j + 1] = RoundKey[k + 1] ^ tempa[1];
+ 8000206:	7843      	ldrb	r3, [r0, #1]
+ 8000208:	405d      	eors	r5, r3
+    RoundKey[j + 2] = RoundKey[k + 2] ^ tempa[2];
+ 800020a:	7883      	ldrb	r3, [r0, #2]
+    RoundKey[j + 1] = RoundKey[k + 1] ^ tempa[1];
+ 800020c:	7445      	strb	r5, [r0, #17]
+    RoundKey[j + 2] = RoundKey[k + 2] ^ tempa[2];
+ 800020e:	405c      	eors	r4, r3
+    RoundKey[j + 3] = RoundKey[k + 3] ^ tempa[3];
+ 8000210:	78c3      	ldrb	r3, [r0, #3]
+    RoundKey[j + 2] = RoundKey[k + 2] ^ tempa[2];
+ 8000212:	7484      	strb	r4, [r0, #18]
+    RoundKey[j + 3] = RoundKey[k + 3] ^ tempa[3];
+ 8000214:	4059      	eors	r1, r3
+ 8000216:	74c1      	strb	r1, [r0, #19]
+ 8000218:	3004      	adds	r0, #4
+  for (i = Nk; i < Nb * (Nr + 1); ++i)
+ 800021a:	2a2c      	cmp	r2, #44	; 0x2c
+ 800021c:	d1de      	bne.n	80001dc <KeyExpansion+0x28>
+  }
+}
+ 800021e:	bdf7      	pop	{r0, r1, r2, r4, r5, r6, r7, pc}
+ 8000220:	08000448 	.word	0x08000448
+ 8000224:	08000453 	.word	0x08000453
+
+08000228 <AddRoundKey>:
+#endif
+
+// This function adds the round key to state.
+// The round key is added to the state by an XOR function.
+static void AddRoundKey(uint8_t round, state_t* state, const uint8_t* RoundKey)
+{
+ 8000228:	b530      	push	{r4, r5, lr}
+ 800022a:	000c      	movs	r4, r1
+ 800022c:	0100      	lsls	r0, r0, #4
+ 800022e:	1812      	adds	r2, r2, r0
+ 8000230:	3410      	adds	r4, #16
+ 8000232:	2300      	movs	r3, #0
+  uint8_t i,j;
+  for (i = 0; i < 4; ++i)
+  {
+    for (j = 0; j < 4; ++j)
+    {
+      (*state)[i][j] ^= RoundKey[(round * Nb * 4) + (i * Nb) + j];
+ 8000234:	5cc8      	ldrb	r0, [r1, r3]
+ 8000236:	5cd5      	ldrb	r5, [r2, r3]
+ 8000238:	4068      	eors	r0, r5
+ 800023a:	54c8      	strb	r0, [r1, r3]
+ 800023c:	3301      	adds	r3, #1
+    for (j = 0; j < 4; ++j)
+ 800023e:	2b04      	cmp	r3, #4
+ 8000240:	d1f8      	bne.n	8000234 <AddRoundKey+0xc>
+ 8000242:	3104      	adds	r1, #4
+ 8000244:	3204      	adds	r2, #4
+  for (i = 0; i < 4; ++i)
+ 8000246:	42a1      	cmp	r1, r4
+ 8000248:	d1f3      	bne.n	8000232 <AddRoundKey+0xa>
+    }
+  }
+}
+ 800024a:	bd30      	pop	{r4, r5, pc}
+
+0800024c <xtime>:
+  (*state)[1][3] = temp;
+}
+
+static uint8_t xtime(uint8_t x)
+{
+  return ((x<<1) ^ (((x>>7) & 1) * 0x1b));
+ 800024c:	231b      	movs	r3, #27
+ 800024e:	09c2      	lsrs	r2, r0, #7
+ 8000250:	4353      	muls	r3, r2
+ 8000252:	0040      	lsls	r0, r0, #1
+ 8000254:	4058      	eors	r0, r3
+ 8000256:	b2c0      	uxtb	r0, r0
+}
+ 8000258:	4770      	bx	lr
+	...
+
+0800025c <Cipher>:
+}
+#endif // #if (defined(CBC) && CBC == 1) || (defined(ECB) && ECB == 1)
+
+// Cipher is the main function that encrypts the PlainText.
+static void Cipher(state_t* state, const uint8_t* RoundKey)
+{
+ 800025c:	b5f0      	push	{r4, r5, r6, r7, lr}
+ 800025e:	b089      	sub	sp, #36	; 0x24
+ 8000260:	9105      	str	r1, [sp, #20]
+  uint8_t round = 0;
+
+  // Add the First round key to the state before starting the rounds.
+  AddRoundKey(0, state, RoundKey);
+ 8000262:	000a      	movs	r2, r1
+{
+ 8000264:	0004      	movs	r4, r0
+  AddRoundKey(0, state, RoundKey);
+ 8000266:	0001      	movs	r1, r0
+ 8000268:	2000      	movs	r0, #0
+ 800026a:	f7ff ffdd 	bl	8000228 <AddRoundKey>
+
+  // There will be Nr rounds.
+  // The first Nr-1 rounds are identical.
+  // These Nr rounds are executed in the loop below.
+  // Last one without MixColumns()
+  for (round = 1; ; ++round)
+ 800026e:	2601      	movs	r6, #1
+ 8000270:	0025      	movs	r5, r4
+ 8000272:	0022      	movs	r2, r4
+ 8000274:	1d20      	adds	r0, r4, #4
+ 8000276:	0011      	movs	r1, r2
+ 8000278:	0013      	movs	r3, r2
+ 800027a:	3110      	adds	r1, #16
+ 800027c:	9101      	str	r1, [sp, #4]
+      (*state)[j][i] = getSBoxValue((*state)[j][i]);
+ 800027e:	781f      	ldrb	r7, [r3, #0]
+ 8000280:	4934      	ldr	r1, [pc, #208]	; (8000354 <Cipher+0xf8>)
+ 8000282:	5dcf      	ldrb	r7, [r1, r7]
+    for (j = 0; j < 4; ++j)
+ 8000284:	9901      	ldr	r1, [sp, #4]
+      (*state)[j][i] = getSBoxValue((*state)[j][i]);
+ 8000286:	701f      	strb	r7, [r3, #0]
+ 8000288:	3304      	adds	r3, #4
+    for (j = 0; j < 4; ++j)
+ 800028a:	428b      	cmp	r3, r1
+ 800028c:	d1f7      	bne.n	800027e <Cipher+0x22>
+ 800028e:	3201      	adds	r2, #1
+  for (i = 0; i < 4; ++i)
+ 8000290:	4282      	cmp	r2, r0
+ 8000292:	d1f0      	bne.n	8000276 <Cipher+0x1a>
+  (*state)[0][1] = (*state)[1][1];
+ 8000294:	7962      	ldrb	r2, [r4, #5]
+  temp           = (*state)[0][1];
+ 8000296:	7863      	ldrb	r3, [r4, #1]
+  (*state)[0][1] = (*state)[1][1];
+ 8000298:	7062      	strb	r2, [r4, #1]
+  (*state)[1][1] = (*state)[2][1];
+ 800029a:	7a62      	ldrb	r2, [r4, #9]
+ 800029c:	7162      	strb	r2, [r4, #5]
+  (*state)[2][1] = (*state)[3][1];
+ 800029e:	7b62      	ldrb	r2, [r4, #13]
+  (*state)[3][1] = temp;
+ 80002a0:	7363      	strb	r3, [r4, #13]
+  (*state)[2][1] = (*state)[3][1];
+ 80002a2:	7262      	strb	r2, [r4, #9]
+  (*state)[0][2] = (*state)[2][2];
+ 80002a4:	7aa2      	ldrb	r2, [r4, #10]
+  temp           = (*state)[0][2];
+ 80002a6:	78a3      	ldrb	r3, [r4, #2]
+  (*state)[0][2] = (*state)[2][2];
+ 80002a8:	70a2      	strb	r2, [r4, #2]
+  (*state)[1][2] = (*state)[3][2];
+ 80002aa:	7ba2      	ldrb	r2, [r4, #14]
+  (*state)[2][2] = temp;
+ 80002ac:	72a3      	strb	r3, [r4, #10]
+  temp           = (*state)[1][2];
+ 80002ae:	79a3      	ldrb	r3, [r4, #6]
+  (*state)[1][2] = (*state)[3][2];
+ 80002b0:	71a2      	strb	r2, [r4, #6]
+  (*state)[0][3] = (*state)[3][3];
+ 80002b2:	7be2      	ldrb	r2, [r4, #15]
+  (*state)[3][2] = temp;
+ 80002b4:	73a3      	strb	r3, [r4, #14]
+  temp           = (*state)[0][3];
+ 80002b6:	78e3      	ldrb	r3, [r4, #3]
+  (*state)[0][3] = (*state)[3][3];
+ 80002b8:	70e2      	strb	r2, [r4, #3]
+  (*state)[3][3] = (*state)[2][3];
+ 80002ba:	7ae2      	ldrb	r2, [r4, #11]
+ 80002bc:	73e2      	strb	r2, [r4, #15]
+  (*state)[2][3] = (*state)[1][3];
+ 80002be:	79e2      	ldrb	r2, [r4, #7]
+  (*state)[1][3] = temp;
+ 80002c0:	71e3      	strb	r3, [r4, #7]
+  (*state)[2][3] = (*state)[1][3];
+ 80002c2:	72e2      	strb	r2, [r4, #11]
+  {
+    SubBytes(state);
+    ShiftRows(state);
+    if (round == Nr) {
+ 80002c4:	2e0a      	cmp	r6, #10
+ 80002c6:	d03e      	beq.n	8000346 <Cipher+0xea>
+ 80002c8:	0023      	movs	r3, r4
+ 80002ca:	3310      	adds	r3, #16
+ 80002cc:	9307      	str	r3, [sp, #28]
+    t   = (*state)[i][0];
+ 80002ce:	782b      	ldrb	r3, [r5, #0]
+    Tmp = (*state)[i][0] ^ (*state)[i][1] ^ (*state)[i][2] ^ (*state)[i][3] ;
+ 80002d0:	786f      	ldrb	r7, [r5, #1]
+ 80002d2:	0018      	movs	r0, r3
+    t   = (*state)[i][0];
+ 80002d4:	9302      	str	r3, [sp, #8]
+    Tmp = (*state)[i][0] ^ (*state)[i][1] ^ (*state)[i][2] ^ (*state)[i][3] ;
+ 80002d6:	78ab      	ldrb	r3, [r5, #2]
+ 80002d8:	4078      	eors	r0, r7
+ 80002da:	9303      	str	r3, [sp, #12]
+ 80002dc:	78eb      	ldrb	r3, [r5, #3]
+ 80002de:	9304      	str	r3, [sp, #16]
+ 80002e0:	9a04      	ldr	r2, [sp, #16]
+ 80002e2:	9b03      	ldr	r3, [sp, #12]
+ 80002e4:	4053      	eors	r3, r2
+ 80002e6:	9306      	str	r3, [sp, #24]
+ 80002e8:	4043      	eors	r3, r0
+ 80002ea:	9301      	str	r3, [sp, #4]
+    Tm  = (*state)[i][0] ^ (*state)[i][1] ; Tm = xtime(Tm);  (*state)[i][0] ^= Tm ^ Tmp ;
+ 80002ec:	f7ff ffae 	bl	800024c <xtime>
+ 80002f0:	9b02      	ldr	r3, [sp, #8]
+ 80002f2:	4058      	eors	r0, r3
+ 80002f4:	9b01      	ldr	r3, [sp, #4]
+ 80002f6:	4058      	eors	r0, r3
+ 80002f8:	7028      	strb	r0, [r5, #0]
+    Tm  = (*state)[i][1] ^ (*state)[i][2] ; Tm = xtime(Tm);  (*state)[i][1] ^= Tm ^ Tmp ;
+ 80002fa:	9803      	ldr	r0, [sp, #12]
+ 80002fc:	4078      	eors	r0, r7
+ 80002fe:	f7ff ffa5 	bl	800024c <xtime>
+ 8000302:	9b01      	ldr	r3, [sp, #4]
+ 8000304:	4047      	eors	r7, r0
+ 8000306:	405f      	eors	r7, r3
+ 8000308:	706f      	strb	r7, [r5, #1]
+    Tm  = (*state)[i][2] ^ (*state)[i][3] ; Tm = xtime(Tm);  (*state)[i][2] ^= Tm ^ Tmp ;
+ 800030a:	9806      	ldr	r0, [sp, #24]
+ 800030c:	f7ff ff9e 	bl	800024c <xtime>
+ 8000310:	9b03      	ldr	r3, [sp, #12]
+ 8000312:	4058      	eors	r0, r3
+ 8000314:	9b01      	ldr	r3, [sp, #4]
+ 8000316:	4058      	eors	r0, r3
+ 8000318:	70a8      	strb	r0, [r5, #2]
+    Tm  = (*state)[i][3] ^ t ;              Tm = xtime(Tm);  (*state)[i][3] ^= Tm ^ Tmp ;
+ 800031a:	9b04      	ldr	r3, [sp, #16]
+ 800031c:	9802      	ldr	r0, [sp, #8]
+ 800031e:	4058      	eors	r0, r3
+ 8000320:	f7ff ff94 	bl	800024c <xtime>
+ 8000324:	9b04      	ldr	r3, [sp, #16]
+ 8000326:	4058      	eors	r0, r3
+ 8000328:	9b01      	ldr	r3, [sp, #4]
+ 800032a:	4058      	eors	r0, r3
+  for (i = 0; i < 4; ++i)
+ 800032c:	9b07      	ldr	r3, [sp, #28]
+    Tm  = (*state)[i][3] ^ t ;              Tm = xtime(Tm);  (*state)[i][3] ^= Tm ^ Tmp ;
+ 800032e:	70e8      	strb	r0, [r5, #3]
+ 8000330:	3504      	adds	r5, #4
+  for (i = 0; i < 4; ++i)
+ 8000332:	42ab      	cmp	r3, r5
+ 8000334:	d1cb      	bne.n	80002ce <Cipher+0x72>
+      break;
+    }
+    MixColumns(state);
+    AddRoundKey(round, state, RoundKey);
+ 8000336:	0030      	movs	r0, r6
+ 8000338:	9a05      	ldr	r2, [sp, #20]
+ 800033a:	0021      	movs	r1, r4
+  for (round = 1; ; ++round)
+ 800033c:	3601      	adds	r6, #1
+    AddRoundKey(round, state, RoundKey);
+ 800033e:	f7ff ff73 	bl	8000228 <AddRoundKey>
+  for (round = 1; ; ++round)
+ 8000342:	b2f6      	uxtb	r6, r6
+    SubBytes(state);
+ 8000344:	e794      	b.n	8000270 <Cipher+0x14>
+  }
+  // Add round key to last round
+  AddRoundKey(Nr, state, RoundKey);
+ 8000346:	9a05      	ldr	r2, [sp, #20]
+ 8000348:	0021      	movs	r1, r4
+ 800034a:	0030      	movs	r0, r6
+ 800034c:	f7ff ff6c 	bl	8000228 <AddRoundKey>
+}
+ 8000350:	b009      	add	sp, #36	; 0x24
+ 8000352:	bdf0      	pop	{r4, r5, r6, r7, pc}
+ 8000354:	08000453 	.word	0x08000453
+
+08000358 <AES_init_ctx>:
+{
+ 8000358:	b510      	push	{r4, lr}
+  KeyExpansion(ctx->RoundKey, key);
+ 800035a:	f7ff ff2b 	bl	80001b4 <KeyExpansion>
+}
+ 800035e:	bd10      	pop	{r4, pc}
+
+08000360 <AES_ECB_encrypt>:
+/*****************************************************************************/
+#if defined(ECB) && (ECB == 1)
+
+
+void AES_ECB_encrypt(const struct AES_ctx* ctx, uint8_t* buf)
+{
+ 8000360:	000b      	movs	r3, r1
+ 8000362:	b510      	push	{r4, lr}
+  // The next function call encrypts the PlainText with the Key using AES algorithm.
+  Cipher((state_t*)buf, ctx->RoundKey);
+ 8000364:	0001      	movs	r1, r0
+ 8000366:	0018      	movs	r0, r3
+ 8000368:	f7ff ff78 	bl	800025c <Cipher>
+}
+ 800036c:	bd10      	pop	{r4, pc}
+
+0800036e <starttrigger>:
+
+.func starttrigger
+.global starttrigger
+
+starttrigger:
+    push {r0-r7}
+ 800036e:	b4ff      	push	{r0, r1, r2, r3, r4, r5, r6, r7}
+    movs r4, #0xE0
+ 8000370:	24e0      	movs	r4, #224	; 0xe0
+    lsls r4, #24
+ 8000372:	0624      	lsls	r4, r4, #24
+    movs r5, #0x04
+ 8000374:	2504      	movs	r5, #4
+    eors r4, r5
+ 8000376:	406c      	eors	r4, r5
+    movs r5, #1
+ 8000378:	2501      	movs	r5, #1
+    str r5, [r4, #0]
+ 800037a:	6025      	str	r5, [r4, #0]
+    pop {r0-r7}
+ 800037c:	bcff      	pop	{r0, r1, r2, r3, r4, r5, r6, r7}
+bx lr
+ 800037e:	4770      	bx	lr
+
+08000380 <endtrigger>:
+
+.func endtrigger
+.global endtrigger
+
+endtrigger:
+    push {r0-r7}
+ 8000380:	b4ff      	push	{r0, r1, r2, r3, r4, r5, r6, r7}
+    movs r4, #0xE0
+ 8000382:	24e0      	movs	r4, #224	; 0xe0
+    lsls r4, #24
+ 8000384:	0624      	lsls	r4, r4, #24
+    movs r5, #0x04
+ 8000386:	2504      	movs	r5, #4
+    eors r4, r5
+ 8000388:	406c      	eors	r4, r5
+    movs r5, #0
+ 800038a:	2500      	movs	r5, #0
+    str r5, [r4, #0]
+ 800038c:	6025      	str	r5, [r4, #0]
+    pop {r0-r7}
+ 800038e:	bcff      	pop	{r0, r1, r2, r3, r4, r5, r6, r7}
+bx lr
+ 8000390:	4770      	bx	lr
+
+08000392 <readbyte>:
+
+.func readbyte
+.global readbyte
+
+readbyte:
+    push {r0-r7}
+ 8000392:	b4ff      	push	{r0, r1, r2, r3, r4, r5, r6, r7}
+    movs r4, #0xE1
+ 8000394:	24e1      	movs	r4, #225	; 0xe1
+    lsls r4, #24
+ 8000396:	0624      	lsls	r4, r4, #24
+    ldr r1, [r4, #0]
+ 8000398:	6821      	ldr	r1, [r4, #0]
+    strb r1, [r0, #0]
+ 800039a:	7001      	strb	r1, [r0, #0]
+    pop {r0-r7}
+ 800039c:	bcff      	pop	{r0, r1, r2, r3, r4, r5, r6, r7}
+
+bx lr
+ 800039e:	4770      	bx	lr
+
+080003a0 <LoadN>:
+
+.func LoadN
+.global LoadN
+
+LoadN:
+    push {r0-r7}
+ 80003a0:	b4ff      	push	{r0, r1, r2, r3, r4, r5, r6, r7}
+    movs r4, #0xE1
+ 80003a2:	24e1      	movs	r4, #225	; 0xe1
+    lsls r4, #24
+ 80003a4:	0624      	lsls	r4, r4, #24
+    movs r5, #0x10
+ 80003a6:	2510      	movs	r5, #16
+    eors r4, r5
+ 80003a8:	406c      	eors	r4, r5
+    ldr r1, [r4, #0]
+ 80003aa:	6821      	ldr	r1, [r4, #0]
+    str r1, [r0, #0]
+ 80003ac:	6001      	str	r1, [r0, #0]
+    pop {r0-r7}
+ 80003ae:	bcff      	pop	{r0, r1, r2, r3, r4, r5, r6, r7}
+
+bx lr
+ 80003b0:	4770      	bx	lr
+
+080003b2 <randbyte>:
+
+.func randbyte
+.global randbyte
+
+randbyte:
+    push {r0-r7}
+ 80003b2:	b4ff      	push	{r0, r1, r2, r3, r4, r5, r6, r7}
+    movs r4, #0xE1
+ 80003b4:	24e1      	movs	r4, #225	; 0xe1
+    lsls r4, #24
+ 80003b6:	0624      	lsls	r4, r4, #24
+    movs r5, #0x04
+ 80003b8:	2504      	movs	r5, #4
+    eors r4, r5
+ 80003ba:	406c      	eors	r4, r5
+    ldr r1, [r4, #0]
+ 80003bc:	6821      	ldr	r1, [r4, #0]
+    strb r1, [r0, #0]
+ 80003be:	7001      	strb	r1, [r0, #0]
+    pop {r0-r7}
+ 80003c0:	bcff      	pop	{r0, r1, r2, r3, r4, r5, r6, r7}
+
+bx lr
+ 80003c2:	4770      	bx	lr
+
+080003c4 <getstart>:
+
+.func getstart
+.global getstart
+
+getstart:
+    push {r0-r7}
+ 80003c4:	b4ff      	push	{r0, r1, r2, r3, r4, r5, r6, r7}
+    movs r4, #0xE1
+ 80003c6:	24e1      	movs	r4, #225	; 0xe1
+    lsls r4, #24
+ 80003c8:	0624      	lsls	r4, r4, #24
+    movs r5, #0x08
+ 80003ca:	2508      	movs	r5, #8
+    eors r4, r5
+ 80003cc:	406c      	eors	r4, r5
+    ldr r1, [r4, #0]
+ 80003ce:	6821      	ldr	r1, [r4, #0]
+    str r1, [r0, #0]
+ 80003d0:	6001      	str	r1, [r0, #0]
+    pop {r0-r7}
+ 80003d2:	bcff      	pop	{r0, r1, r2, r3, r4, r5, r6, r7}
+
+bx lr
+ 80003d4:	4770      	bx	lr
+
+080003d6 <getruncount>:
+
+.func getruncount
+.global getruncount
+
+getruncount:
+    push {r0-r7}
+ 80003d6:	b4ff      	push	{r0, r1, r2, r3, r4, r5, r6, r7}
+    movs r4, #0xE1
+ 80003d8:	24e1      	movs	r4, #225	; 0xe1
+    lsls r4, #24
+ 80003da:	0624      	lsls	r4, r4, #24
+    movs r5, #0x0C
+ 80003dc:	250c      	movs	r5, #12
+    eors r4, r5
+ 80003de:	406c      	eors	r4, r5
+    ldr r1, [r4, #0]
+ 80003e0:	6821      	ldr	r1, [r4, #0]
+    str r1, [r0, #0]
+ 80003e2:	6001      	str	r1, [r0, #0]
+    pop {r0-r7}
+ 80003e4:	bcff      	pop	{r0, r1, r2, r3, r4, r5, r6, r7}
+
+bx lr
+ 80003e6:	4770      	bx	lr
+
+080003e8 <printbyte>:
+
+.func printbyte
+.global printbyte
+
+printbyte:
+    push {r0-r7}
+ 80003e8:	b4ff      	push	{r0, r1, r2, r3, r4, r5, r6, r7}
+    movs r4, #0xE0
+ 80003ea:	24e0      	movs	r4, #224	; 0xe0
+    lsls r4, #24
+ 80003ec:	0624      	lsls	r4, r4, #24
+    ldrb r5, [r0]
+ 80003ee:	7805      	ldrb	r5, [r0, #0]
+    str r5, [r4]
+ 80003f0:	6025      	str	r5, [r4, #0]
+    pop {r0-r7}
+ 80003f2:	bcff      	pop	{r0, r1, r2, r3, r4, r5, r6, r7}
+bx lr
+ 80003f4:	4770      	bx	lr
+
+080003f6 <endprogram>:
+
+.func endprogram
+.global endprogram
+
+endprogram:
+    push {r0-r7}
+ 80003f6:	b4ff      	push	{r0, r1, r2, r3, r4, r5, r6, r7}
+    movs r4, #0xF0
+ 80003f8:	24f0      	movs	r4, #240	; 0xf0
+    lsls r4, #24
+ 80003fa:	0624      	lsls	r4, r4, #24
+    movs r5, #0
+ 80003fc:	2500      	movs	r5, #0
+
+    str r5, [r4]
+ 80003fe:	6025      	str	r5, [r4, #0]
+    pop {r0-r7}
+ 8000400:	bcff      	pop	{r0, r1, r2, r3, r4, r5, r6, r7}
+bx lr
+ 8000402:	4770      	bx	lr
+
+08000404 <initialisemaskflow>:
+.func initialisemaskflow
+.global initialisemaskflow
+
+# Takes address of key as input (r0)
+initialisemaskflow:
+    push {r0-r7}
+ 8000404:	b4ff      	push	{r0, r1, r2, r3, r4, r5, r6, r7}
+    movs r4, #0xE0
+ 8000406:	24e0      	movs	r4, #224	; 0xe0
+    lsls r4, #24
+ 8000408:	0624      	lsls	r4, r4, #24
+    movs r5, #0x40
+ 800040a:	2540      	movs	r5, #64	; 0x40
+    eors r4, r5
+ 800040c:	406c      	eors	r4, r5
+    str r0, [r4]
+ 800040e:	6020      	str	r0, [r4, #0]
+    pop {r0-r7}
+ 8000410:	bcff      	pop	{r0, r1, r2, r3, r4, r5, r6, r7}
+bx lr
+ 8000412:	4770      	bx	lr
+
+08000414 <resetmaskflow>:
+
+.func resetmaskflow
+.global resetmaskflow
+
+resetmaskflow:
+    push {r0-r7}
+ 8000414:	b4ff      	push	{r0, r1, r2, r3, r4, r5, r6, r7}
+    movs r4, #0xE0
+ 8000416:	24e0      	movs	r4, #224	; 0xe0
+    lsls r4, #24
+ 8000418:	0624      	lsls	r4, r4, #24
+    movs r5, #0x42
+ 800041a:	2542      	movs	r5, #66	; 0x42
+    eors r4, r5
+ 800041c:	406c      	eors	r4, r5
+    movs r5, #0
+ 800041e:	2500      	movs	r5, #0
+    str r5, [r4]
+ 8000420:	6025      	str	r5, [r4, #0]
+    pop {r0-r7}
+ 8000422:	bcff      	pop	{r0, r1, r2, r3, r4, r5, r6, r7}
+bx lr
+ 8000424:	4770      	bx	lr
+
+08000426 <setmaskflowstart>:
+.global setmaskflowstart
+
+# Takes r0 as start number
+
+setmaskflowstart:
+    push {r0-r7}
+ 8000426:	b4ff      	push	{r0, r1, r2, r3, r4, r5, r6, r7}
+    movs r4, #0xE0
+ 8000428:	24e0      	movs	r4, #224	; 0xe0
+    lsls r4, #24
+ 800042a:	0624      	lsls	r4, r4, #24
+    movs r5, #0x44
+ 800042c:	2544      	movs	r5, #68	; 0x44
+    eors r4, r5
+ 800042e:	406c      	eors	r4, r5
+    str r0, [r4]
+ 8000430:	6020      	str	r0, [r4, #0]
+    pop {r0-r7}
+ 8000432:	bcff      	pop	{r0, r1, r2, r3, r4, r5, r6, r7}
+bx lr
+ 8000434:	4770      	bx	lr
+
+08000436 <resetdatafile>:
+
+.func resetdatafile
+.global resetdatafile
+
+resetdatafile:
+    push {r0-r7}
+ 8000436:	b4ff      	push	{r0, r1, r2, r3, r4, r5, r6, r7}
+    movs r4, #0xE0
+ 8000438:	24e0      	movs	r4, #224	; 0xe0
+    lsls r4, #24
+ 800043a:	0624      	lsls	r4, r4, #24
+    movs r5, #0x46
+ 800043c:	2546      	movs	r5, #70	; 0x46
+    eors r4, r5
+ 800043e:	406c      	eors	r4, r5
+    movs r5, #0
+ 8000440:	2500      	movs	r5, #0
+    str r5, [r4]
+ 8000442:	6025      	str	r5, [r4, #0]
+    pop {r0-r7}
+ 8000444:	bcff      	pop	{r0, r1, r2, r3, r4, r5, r6, r7}
+bx lr
+ 8000446:	4770      	bx	lr
+
+08000448 <Rcon>:
+ 8000448:	018d 0402 1008 4020 1b80                     ...... @..6
+
+08000453 <sbox>:
+ 8000453:	7c63 7b77 6bf2 c56f 0130 2b67 d7fe 76ab     c|w{.ko.0.g+...v
+ 8000463:	82ca 7dc9 59fa f047 d4ad afa2 a49c c072     ...}.YG.......r.
+ 8000473:	fdb7 2693 3f36 ccf7 a534 f1e5 d871 1531     ...&6?..4...q.1.
+ 8000483:	c704 c323 9618 9a05 1207 e280 27eb 75b2     ..#..........'.u
+ 8000493:	8309 1a2c 6e1b a05a 3b52 b3d6 e329 842f     ..,..nZ.R;..)./.
+ 80004a3:	d153 ed00 fc20 5bb1 cb6a 39be 4c4a cf58     S... ..[j..9JLX.
+ 80004b3:	efd0 fbaa 4d43 8533 f945 7f02 3c50 a89f     ....CM3.E...P<..
+ 80004c3:	a351 8f40 9d92 f538 b6bc 21da ff10 d2f3     Q.@...8....!....
+ 80004d3:	0ccd ec13 975f 1744 a7c4 3d7e 5d64 7319     ...._.D...~=d].s
+ 80004e3:	8160 dc4f 2a22 8890 ee46 14b8 5ede db0b     `.O."*..F....^..
+ 80004f3:	32e0 0a3a 0649 5c24 d3c2 62ac 9591 79e4     .2:.I.$\...b...y
+ 8000503:	c8e7 6d37 d58d a94e 566c eaf4 7a65 08ae     ..7m..N.lV..ez..
+ 8000513:	78ba 2e25 a61c c6b4 dde8 1f74 bd4b 8a8b     .x%.......t.K...
+ 8000523:	3e70 66b5 0348 0ef6 3561 b957 c186 9e1d     p>.fH...a5W.....
+ 8000533:	f8e1 1198 d969 948e 1e9b e987 55ce df28     ....i........U(.
+ 8000543:	a18c 0d89 e6bf 6842 9941 0f2d 54b0 16bb     ......BhA.-..T..
+	...
