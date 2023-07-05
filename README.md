@@ -5,6 +5,7 @@
 * [dreamhack](/dreamhack/)
 * [CryptoHack](/CryptoHack/)
 * [ROP Emporium](/ROP-Emporium/)
+* [Exploit Education](/Exploit-Education/)
 
 # CTF Contests
 
