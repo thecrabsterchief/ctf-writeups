@@ -5,3 +5,4 @@
 * [HSCTF 10 2023](./HSCTF%2010/)
 * [Google CTF 2023](./GoogleCTF/)
 * [UIUCTF 2023](./UIUCTF/)
+* [CrewCTF 2023](./CrewCTF/)
