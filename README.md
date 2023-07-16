@@ -2,6 +2,7 @@
 
 * [picoCTF](/picoCTF)
 * [HackTheBox](/HackTheBox/)
+* [Root Me](/Root%20Me/)
 * [dreamhack](/dreamhack/)
 * [CryptoHack](/CryptoHack/)
 * [ROP Emporium](/ROP-Emporium/)
