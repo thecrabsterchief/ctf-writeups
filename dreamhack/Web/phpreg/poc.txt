@@ -1,0 +1,6 @@
+// Step 1
+username: dnnyangyang0310
+password: 1@11319!+1+13
+
+// Step 2
+cmd: grep -r "DH{" ../dream
