@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Index {% endblock %}
+
+{% block head %}
+  {{ super() }}
+  <style type="text/css">
+    .important { color: #336699; }
+  </style>
+{% endblock %}
+
+{% block content %}
+  <p class="important"><a href="/step1?param=&param2=">STEP 1</a></p>
+  <p class="important"><a href="/step2">STEP 2</a></p>
+  <p class="important"><a href="/flag">FLAG</a></p>
+{% endblock %}

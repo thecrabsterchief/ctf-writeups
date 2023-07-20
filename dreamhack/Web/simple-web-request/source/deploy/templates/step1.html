@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Step1 {% endblock %}
+
+{% block head %}
+  {{ super() }}
+  <style type="text/css">
+    .important { color: #336699; }
+  </style>
+{% endblock %}
+
+{% block content %}
+  <form action="/step1" method="get">
+    <p>/step1?param=<input type="text" name="param"/>&#38;param2=<input type="text" name="param2"/></p>
+    <input type="submit"/><br/>
+  </form>
+  <br/>
+  <pre>{{ text }}</pre>
+{% endblock %}  

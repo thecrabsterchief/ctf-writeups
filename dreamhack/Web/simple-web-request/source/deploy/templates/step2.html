@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Step2 {% endblock %}
+
+{% block head %}
+  {{ super() }}
+  <style type="text/css">
+    .important { color: #336699; }
+  </style>
+{% endblock %}
+
+{% block content %}
+{% if prev_step_num and hidden_num %}
+  <form action="/flag" method="post">
+    <p>param <input type="text" name="param"/></p>
+    <p>param2 <input type="text" name="param2"/></p>
+    <input type="hidden" name="check" value="{{ hidden_num }}">
+    <input type="submit"/><br/>
+  </form>
+{% else %}
+  <pre>{{ text }}</pre>
+{% endif %}
+{% endblock %}
