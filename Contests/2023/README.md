@@ -7,3 +7,4 @@
 * [UIUCTF 2023](./UIUCTF/)
 * [CrewCTF 2023](./CrewCTF/)
 * [zer0pts CTF 2023](./zer0pts%20CTF/)
+* [Cryptoverse CTF 2023](./Cryptoverse/)
