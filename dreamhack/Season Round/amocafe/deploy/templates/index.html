@@ -1,0 +1,33 @@
+<html>
+<head>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-theme.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/non-responsive.css') }}">
+  <title>Amocafe</title>
+</head>
+<body>
+  <div class="container">
+    <image class="amo_img" src="/static/images/amo_twinkle.png" />
+    <p class="bold">
+      "My favorite menu is <code>{{ menu }}</code> 🥤"
+      <form action="/" method="post">
+        <input name="menu_input" maxlength="20" placeholder="menu number" type="text" />
+        <button>order</button>
+      </form>
+    </p>
+    {% if flag %}
+    <pre>{{ flag }}</pre>
+    {% endif %}
+  </div>
+
+  <style type="text/css">
+    .amo_img { 
+      width: 100px;
+      height: 100px;
+    }
+    .bold {
+      font-weight: 700;
+    }
+  </style>
+</body>
+</html>
