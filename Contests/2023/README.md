@@ -9,4 +9,4 @@
 - [zer0pts CTF 2023](./zer0pts%20CTF/)
 - [Cryptoverse CTF 2023](./Cryptoverse/)
 - [CorCTF 2023](./corCTF%202023/)
-- [Arab Security Cyber Wargames 2023 Qualifications](./ASCW -Quals/)
+- [Arab Security Cyber Wargames 2023 Qualifications](./ASCW%20-%20Quals/)
