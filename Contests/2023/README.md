@@ -10,3 +10,4 @@
 - [Cryptoverse CTF 2023](./Cryptoverse/)
 - [CorCTF 2023](./corCTF%202023/)
 - [Arab Security Cyber Wargames 2023 Qualifications](./ASCW%20-%20Quals/)
+- [Lexington Informatics Tournament CTF 2023](./Lexington%20Informatics%20Tournament%20CTF%202023/)
