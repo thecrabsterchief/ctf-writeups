@@ -1,0 +1,1 @@
+LITCTF{groebner_so_op_this_would_be_very_awkward_if_you_used_resultants}
