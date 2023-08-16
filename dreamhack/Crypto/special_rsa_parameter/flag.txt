@@ -1,0 +1,1 @@
+BISC{special_parameter_for_https://crypto.stackexchange.com/questions/81949/how-to-compute-m-value-from-rsa-if-phin-is-not-relative-prime-with-the-e_ed9fd3b21b8190eb2bd91c56c996e362bfbeeeccdc5ff9692f521127e6193d1f}
