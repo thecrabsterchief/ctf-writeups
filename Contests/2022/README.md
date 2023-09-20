@@ -10,6 +10,7 @@
 * [HCMUS CTF](./HCMUS%20CTF%202022/)
 * [ISITDTU CTF](./ISITDTU%20CTF%202022/)
 * [Just CTF](./Just%20CTF%202022/)
+* [maple CTF](./maple-ctf-2022/)
 * [Pico CTF](./PicoCTF%202022/)
 * [US Cyber Open CTF](../US%20Cyber%20Open%20CTF%202022/)
 * [WhiteHat Wargame](./WhiteHat%20Wargame%202022/)
