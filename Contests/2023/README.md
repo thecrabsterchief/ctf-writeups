@@ -12,3 +12,4 @@
 - [Arab Security Cyber Wargames 2023 Qualifications](./ASCW%20-%20Quals/)
 - [Lexington Informatics Tournament CTF 2023](./Lexington%20Informatics%20Tournament%20CTF%202023/)
 - [COMPFEST CTF 2023](./compest-ctf-2023/)
+- [vsCTF 2023](./vsCTF-2023/)
