@@ -13,3 +13,4 @@
 - [Lexington Informatics Tournament CTF 2023](./Lexington%20Informatics%20Tournament%20CTF%202023/)
 - [COMPFEST CTF 2023](./compest-ctf-2023/)
 - [vsCTF 2023](./vsCTF-2023/)
+- [mapleCTF 2023](./maple-ctf-2023/)
