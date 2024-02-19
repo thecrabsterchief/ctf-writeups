@@ -9,6 +9,7 @@
 * [DownUnder CTF](../DownUnder%20CTF%202022)
 * [Google CTF](./Google%20CTF%202022/)
 * [HCMUS CTF](./HCMUS%20CTF%202022/)
+* [HackPack CTF](./HackPack%20CTF%202022/)
 * [ISITDTU CTF](./ISITDTU%20CTF%202022/)
 * [Just CTF](./Just%20CTF%202022/)
 * [maple CTF](./maple-ctf-2022/)
